@@ -1,5 +1,6 @@
 package com.example.alpuidesign.OnBoardingActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.alpuidesign.AdapterClasses.OnBoardingAdapter
+import com.example.alpuidesign.BottomNavFragment.BottomNavigation
 import com.example.alpuidesign.ModelClasses.OnBoardingItems
 import com.example.alpuidesign.R
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
@@ -46,6 +48,12 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun onClickListener() {
        btnNext.setOnClickListener {
            val currentItem = viewPager.currentItem
+           if(currentItem==onboardingItems.size-1)
+           {
+               startActivity(Intent(this,BottomNavigation::class.java))
+               finish()
+           }
+           else
            viewPager.setCurrentItem(currentItem + 1, true)
        }
     }
@@ -70,8 +78,6 @@ class OnBoardingActivity : AppCompatActivity() {
                 if (position == onboardingItems.size - 1) {
 
                 }
-
-
 
             }
         })
