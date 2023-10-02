@@ -1,5 +1,6 @@
 package com.example.alpuidesign.OnBoardingActivity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,7 @@ class OnBoardingActivity : AppCompatActivity() {
         addViewPager()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun onClickListener() {
        btnNext.setOnClickListener {
            val currentItem = viewPager.currentItem
