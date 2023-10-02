@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.alpuidesign.ModelClasses.ModelBookingLists
 import com.example.alpuidesign.R
 
-class AdapterBookingLists():RecyclerView.Adapter<AdapterBookingLists.ViewHolder>() {
+class AdapterBookingLists(val callBack: (position: Int, item: ModelBookingLists) -> Unit):RecyclerView.Adapter<AdapterBookingLists.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterBookingLists.ViewHolder {
         val view= LayoutInflater.from(parent.context).inflate(R.layout.items_mybooking,parent,false)
@@ -37,6 +37,10 @@ class AdapterBookingLists():RecyclerView.Adapter<AdapterBookingLists.ViewHolder>
         holder.tvBookingStartTime.text=arrMessage[position].tvBookingStartTime
         holder.tvBookingEndDay.text=arrMessage[position].tvBookingEndDay
         holder.tvBookingEndTime.text=arrMessage[position].tvBookingEndTime
+
+        holder.itemView.setOnClickListener {
+            callBack(position,arrMessage[position])
+        }
     }
 
     class ViewHolder(ItemView: View):RecyclerView.ViewHolder(ItemView)

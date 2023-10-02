@@ -1,5 +1,6 @@
 package com.example.alpuidesign.Fragments
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.alpuidesign.Activities.BookingDetailActivity
 import com.example.alpuidesign.AdapterClasses.AdapterBookingLists
 import com.example.alpuidesign.ModelClasses.ModelBookingLists
 import com.example.alpuidesign.R
@@ -41,7 +43,11 @@ class MyBookingFragment : Fragment() {
         showlist.add(ModelBookingLists("PARKING COMPLETED","Hillview Hotel MC", "$5","Vathalia Lamabazar, Sylhet","Thu 23 Jan","10:00","Thu 27 Jan","12:00"))
         showlist.add(ModelBookingLists("PARKING ONGOING","Easkarton Shopping Mall", "$7","10, Bilpar Road, Sylhet","Thu 23 Jan","10:00","Thu 27 Jan","12:00"))
 
-        val adopter= AdapterBookingLists()
+        val adopter= AdapterBookingLists(){position, item ->
+            val intent= Intent(requireContext(),BookingDetailActivity::class.java)
+            intent.putExtra("bookingObject", item)
+            startActivity(intent)
+        }
         adopter.setDate(showlist)
         binding?.rvBookingList?.adapter=adopter
     }
