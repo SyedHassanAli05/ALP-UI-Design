@@ -19,7 +19,6 @@ import com.example.alpuidesign.databinding.ActivityMyBookingFragmentBinding
 
 class MyBookingFragment : Fragment() {
     var binding:ActivityMyBookingFragmentBinding?=null
-    lateinit var rvBookingList:RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
